@@ -16,7 +16,7 @@ Employee.init(
         last_name: {
             type: DataTypes.STRING
         },
-        department: {
+        department_id: {
             type: DataTypes.STRING
         },
         role: {

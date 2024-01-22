@@ -1,11 +1,11 @@
 const connection = require('../config/connection');
 const inquirer = require('inquirer');
-const {} = require('./departmentRoutes');
-const {} = require('./employeeRoutes');
-const {} = require('./roleRoutes');
+const {viewDepartments, addDepartment} = require('./departmentRoutes');
+const {viewEmployees, addEmployee, updateEmployeeRole} = require('./employeeRoutes');
+const {viewRoles, addRole} = require('./roleRoutes');
 
 async function menu() {
-    const choices = await inquirer.prompt({
+    const choice = await inquirer.prompt({
                 name: 'mainMenu', 
                 type: 'list',
                 choices: [
@@ -20,12 +20,12 @@ async function menu() {
                 ]
             
             })
-    switch(choices) {
+    switch(choice) {
         case 'View Departments':
             viewDepartments();
             break;
         case 'Add Department':
-            addDepartments();
+            addDepartment();
             break;
         case 'View Employees':
             viewEmployees();
@@ -40,7 +40,7 @@ async function menu() {
             viewRoles();
             break;
         case 'Add Role':
-            addAbortListener();
+            addRole();
             break;
         case 'Exit':
           connection.end()  

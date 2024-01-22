@@ -13,7 +13,7 @@ Role.init(
         title: {
             type: DataTypes.STRING
         },
-        department: {
+        department_id: {
             type: DataTypes.STRING
         },
         salary: {
@@ -26,6 +26,7 @@ Role.init(
         timestamps: false,
         modelName: 'role'
     }
-);
+
+    );
 
 module.exports = Role;
