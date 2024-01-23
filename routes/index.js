@@ -1,26 +1,27 @@
 const connection = require('../config/connection');
 const inquirer = require('inquirer');
-const {viewDepartments, addDepartment} = require('./departmentRoutes');
-const {viewEmployees, addEmployee, updateEmployeeRole} = require('./employeeRoutes');
-const {viewRoles, addRole} = require('./roleRoutes');
+const { viewDepartments, addDepartment } = require('./department');
+const { viewEmployees, addEmployee, updateEmployeeRole } = require('./employee');
+const { viewRoles, addRole } = require('./role');
 
-async function menu() {
-    const choice = await inquirer.prompt({
-                name: 'mainMenu', 
-                type: 'list',
-                choices: [
-                    'View Departments',
-                    'Add Department',
-                    'View Employees',
-                    'Add Employee',
-                    'Update Employee Role',
-                    'View Roles',
-                    'Add Role',
-                    'Exit',
-                ]
-            
-            })
-    switch(choice) {
+function menu() {
+    inquirer.prompt({
+        name: 'mainMenu',
+        type: 'list',
+        choices: [
+            'View Departments',
+            'Add Department',
+            'View Employees',
+            'Add Employee',
+            'Update Employee Role',
+            'View Roles',
+            'Add Role',
+            'Exit',
+        ]
+
+    })
+    .then(mainMenu => {
+    switch (mainMenu) {
         case 'View Departments':
             viewDepartments();
             break;
@@ -43,9 +44,10 @@ async function menu() {
             addRole();
             break;
         case 'Exit':
-          connection.end()  
+            connection.end()
 
     }
+});
 };
 
-menu();
+module.exports = menu;
