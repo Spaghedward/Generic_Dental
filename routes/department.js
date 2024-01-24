@@ -6,10 +6,10 @@ const viewDepartments = () => {
     const sql = `SELECT * FROM department`;
    db.query(sql, (err, res) => {
         if (err) throw err;
-        console.table(res);
+        const departments = res;
+        return departments;
         
     });
-    menu();
     
 };
 
