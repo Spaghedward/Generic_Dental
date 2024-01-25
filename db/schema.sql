@@ -19,7 +19,7 @@ CREATE TABLE
         title VARCHAR(30) NOT NULL,
         department_id INTEGER,
         salary DECIMAL(7) NOT NULL,
-        FOREIGN KEY (department_id) REFERENCES department(id)
+        ADD CONSTRAINT PK_Role FOREIGN KEY (department_id) REFERENCES department(id)
     );
 
 CREATE TABLE
@@ -30,5 +30,6 @@ CREATE TABLE
         department_id INTEGER,
         role VARCHAR(30),
         salary DECIMAL(7), 
-        manager VARCHAR(30)
+        manager VARCHAR(30),
+        FOREIGN KEY (department_id) REFERENCES department(id)
     );
